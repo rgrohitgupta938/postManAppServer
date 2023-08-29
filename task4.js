@@ -31,15 +31,15 @@ app.post("/myserver1/url", async function (req, res) {
       let response = await axios.get(baseURL, {
         headers: { authorization: +auth },
       });
-      console.log(response.data);
+      console.log("Inside get response Line 35", response);
       let responseData = response.data;
-      console.log(typeof responseData);
+      console.log("In line 36", typeof responseData);
       if (typeof responseData === "number") {
         responseData = "" + responseData;
-        console.log(responseData);
         res.send(responseData);
       } else {
-        res.send(responseData);
+        console.log("Hello response");
+        res.send(response.data);
       }
     }
     if (body.method === "POST") {
@@ -64,6 +64,7 @@ app.post("/myserver1/url", async function (req, res) {
       res.send(response.data);
     }
   } catch (error) {
-    console.log(error);
+    console.log("Error line 67:", error.response || "hellostatus");
+    res.send(error.response);
   }
 });
