@@ -65,6 +65,6 @@ app.post("/myserver1/url", async function (req, res) {
     }
   } catch (error) {
     console.log("Error line 67:", error.response || "hellostatus");
-    res.send(error.response);
+    res.send(error);
   }
 });
